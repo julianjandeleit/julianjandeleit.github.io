@@ -34,7 +34,7 @@ github_alerts = true
 # Put all your custom variables here
 name = "Julian Jandeleit"
 role = "Computer and Data Scientist"
-cv_url ="/CV.pdf"
+# cv_url ="/CV.pdf"
 bio = """
 My experience ranges from computer vision, over stochastic modeling and modern machine learning to robotics and distributed systems engineering.
 Currently, I'm employed at the R&D department of Baumer Group, developing data processing and analysis pipelines for new 3D sensor solutions.
