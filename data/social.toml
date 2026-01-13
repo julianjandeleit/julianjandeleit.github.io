@@ -9,6 +9,11 @@ url = "https://github.com/julianjandeleit"
 icon = "fab fa-github"
 
 [[social]]
+name = "ORCID"
+url = "https://orcid.org/0000-0002-5142-0879"
+icon = "ai ai-orcid"
+
+[[social]]
 name = "Google Scholar"
 url = "https://scholar.google.com/scholar?hl=de&as_sdt=0,5&q=julian+jandeleit"
 icon = "ai ai-google-scholar"
