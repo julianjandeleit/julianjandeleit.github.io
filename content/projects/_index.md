@@ -7,4 +7,4 @@ template = "projects.html"
 
 # Projects
 
-This list is a non-exhaustive collection of public projects I have worked on during my studies, as thesis, funded work or in my free time.
+This list is selection of public projects I have worked on during my studies, as thesis, funded work or in my free time.

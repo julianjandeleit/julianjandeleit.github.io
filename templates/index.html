@@ -22,8 +22,7 @@
                 {% endif %}
                 
                 {% if config.extra.bio %}
-                <div class="bio">
-                    <h3>About Me</h3>
+                <div class="bio">                    
                     <div>{{ config.extra.bio | markdown(inline=false) | safe }}</div>
                 </div>
                 {% endif %}

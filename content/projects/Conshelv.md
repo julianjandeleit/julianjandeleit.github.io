@@ -1,6 +1,6 @@
 +++
 title = "Conshelv"
-description = "A distributed archive for personal photos with folderless organization, I'm currently working on in my free time."
+description = "A share-able archive for long-term personal photos with tags for folderless organization, I'm currently working on in my free time."
 date = "2024-01-01"
 template = "article.html"
 

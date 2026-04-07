@@ -36,10 +36,14 @@ name = "Julian Jandeleit"
 role = "Computer and Data Scientist"
 # cv_url ="/CV.pdf"
 bio = """
-My experience ranges from computer vision, over stochastic modeling and modern machine learning to robotics and distributed systems engineering.
-Currently, I'm employed at the R&D department of Baumer Group, developing data processing and analysis pipelines for new 3D sensor solutions.
+I'm passionate about understanding our world through data, mathematics, and computational modeling to create technologies for the benefit of everyone.
 
-In my free time I like to make music :musical_keyboard: :guitar:, take photos :camera: or go sailing :sailboat:.
+A primary field of interest is autonomous systems which has led me to work on several projects in the intersection of computer vision, robotics, and machine learning.
+
+Currently, I'm employed at Baumer Innovation GmbH, developing 3D data analysis and processing pipelines for new sensor solutions. 
+Next to my work, I focus on its theoretical foundations by studying mathematics as a third degree on top of my previous studies in computer science.
+
+In my free time, I like to make music :musical_keyboard: :guitar:, take photos :camera: or go sailing :sailboat: on Lake Constance.
 """
 
 # navbar items

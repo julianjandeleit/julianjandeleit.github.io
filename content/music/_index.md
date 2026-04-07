@@ -3,13 +3,21 @@ title = "Music"
 description = "I play piano and guitar and like to play-along, improvise and draft new melodies"
 +++
 
+# Original Works
+
+Some piano improvisations have turned into their own pieces. _Finished pieces_, where I have written sheet music for are:
+
+ - _Perfectly Superficial_
+ - _Spiral Waves_
+
+<br>
+
+_Perfectly Superficial_, was originally inspired by the Black Mirror episode _Nosedive_.
 
 # Piano
 
 I took over 12 years of piano lessons in my childhood, receiving training in both classical and modern music. Now, I enjoy playing along with pop and rock songs, as well as performing neoclassical minimalist pieces. 
 I've also taught myself to improvise in this style, which has led to a few distinct compositions.
-
-Written sheet music is available for _Perfectly Superficial_, which was originally inspired by the Black Mirror episode _Nosedive_.
 
 Some pieces i like to play:
  -  _Canon in D_, Pachelbel
@@ -33,20 +41,3 @@ Some pieces i like to play:
  - _Etude No. 6_, Leo Brouwer
  - _Nothing Else Matters_, Metallica
  - _Sometimes I Feel Like Screaming_, Deep Purple
-
-
-<br>
-
-# Sheet Music
-
-Previews of my sheet music
-
-## Perfectly Superficial
-
-{{ pdf_preview(url='media/music/perfectly_superficial_preview.pdf') }}
-
-<br>
-
-## Sometimes I Feel Like Screaming
-
-{{ pdf_preview(url='media/music/sometimes_i_feel_like_screaming_preview.pdf') }}
