@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Website of Julian Jandeleit</title>
+    <subtitle>Personal Website of Julian Jandeleit</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://julianjandeleit.github.io/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://julianjandeleit.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2025-01-01T00:00:00+00:00</updated>
+    <id>https://julianjandeleit.github.io/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Master Thesis: Training LLMs to create Swarm Behavior</title>
+        <published>2025-01-01T00:00:00+00:00</published>
+        <updated>2025-01-01T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://julianjandeleit.github.io/projects/master-thesis-llm-smarm-behavior/"/>
+        <id>https://julianjandeleit.github.io/projects/master-thesis-llm-smarm-behavior/</id>
+        
+        <content type="html" xml:base="https://julianjandeleit.github.io/projects/master-thesis-llm-smarm-behavior/">&lt;h1 id=&quot;overview&quot;&gt;Overview&lt;&#x2F;h1&gt;
+&lt;p&gt;Designing collective behavior from scratch is difficult. To build robot swarms that solve a desired task, the complex effect of local interaction between all robots needs to be understood and correctly modeled. Then, individual robot controllers can be crafted that then result in an emergent global behavior at the swarm level by interaction with peers. However, decentrally controlled robot swarms have advantages or robustness, scalability and cost effectivenes.&lt;&#x2F;p&gt;
+&lt;p&gt;Transformer-based Large Language Models (LLMS), publicly known as _AI_has recently shown surprising capabilites of semantic understanding of domain knowledge they were not-trained on. This has led to prompt-engineering approaches that assign a LLM the robot and task them to come up with the next action.
+For swarm robotics, this approach has many downsides. First, LLMs are a very ressource heavy model, which represents a stark contrast to the small, lightweight robotic agents. Second, experiments in swarm robotics have sofar instructed them with known swarm algorithms, faced major challenges in creating convergent behavior or used a top down approach, where the LLM has global knowledge, which is unsuitable to achieve scalability and true collective behavior. Third, collective robotics is a very niche topic, and LLMs have likely not seen many examples durinig training, so prompt engineering is naturally limited.&lt;&#x2F;p&gt;
+&lt;p&gt;In my master thesis I suggest training a LLM on examples of local agent behavior and resulting global swarm behavior to create a local-to-global model and represent the missing macro-micro-link for top-down behavior design and understanding. In this approach, the LLM is not the robot controller itself, but takes the place of a meta-model that generates the actual robot controllers according to given constraints.
+In the scope of the thesis I fine-tune a pre-trained LLM on a custom artificial dataset of textual descriptions of a scenario and corresponding behavior trees as robot controllers. The dataset builds on top of AutoMoDe-Maple, an evolutionary method for designing robot controllers according to a fitness function. While showing to still beeing a challenge to beat state-of-the-art methods using this approach, I show that the fine-tuned LLM understands enough about collective behavior to create working roboter controllers for scenarios and missions it was not trained on. It has also shown advantages over conventional optimization methods by producing suitable behaviors in response to environmental changes from a single zero-shot inference, while conventional approaches would require time-consuming optimization afterwards.
+With what my initial investigation has shown, I strongly believe that the gap w.r.t. state-of-the-art in performance benchmarks is an engineering challenge that can be overcome with sufficient time and effort, and trained LLMs are a suitable meta-method to bridge the macro-micro gap.&lt;&#x2F;p&gt;
+&lt;p&gt;A nice-to-have is, that since the input is natural-language text, my approach allows non-expert users to create collective behavior and instruct robot swarms without domain knowledge.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;example&quot;&gt;Example&lt;&#x2F;h2&gt;
+&lt;p&gt;This example shows a scenario where the model has not seen missions of type &lt;em&gt;aggregation&lt;&#x2F;em&gt; during training. Here, the robot swarm has to meet at the black area on the ground. Note that the E-Puck robot model used here cannot see the ground color from distance and the robots have to rely on the peers in their local environment to efficiently navigate to the correct place.&lt;&#x2F;p&gt;
+&lt;p&gt;The yellow ball in the visualization refers to a light the robots can use for orientation. The position of the light however is not necessarily at the black area. This fact is ,in this case, communicated to the LLM by the absolute position. The placement of lights serves as an example of different environmental conditions the LLM &lt;em&gt;can&lt;&#x2F;em&gt; make use of.&lt;&#x2F;p&gt;
+&lt;p&gt;The example shows that the LLM was able to create a robot controller that achieves the desired behavior, even without having seen a single aggregation type mission during training. This goal has only understood by combinding the pre-training that makes the LLM understand general language and the fine-tuning on swarm behavior, that allows the LLM to understand the meaning of different local behaviors w.r.t. the global swarm goal.&lt;&#x2F;p&gt;
+&lt;p&gt;LLM Input:&lt;&#x2F;p&gt;
+&lt;pre&gt;&lt;code&gt;The circular arena, constructed with 19 walls, has a radius of 3.17 m. The following lights are present in the arena at coordinates: ((-0.36, 0.14)).Evenly positioned around the origin are 14 robots within a radius of 1.20 meters. The goal is for the robots to aggregate at the black circle. There are two areas on the floor: a circle at [-1.47, 1.91] with a radius of 0.53 meters in white, and another circle at [-0.36, 0.14] with a radius of 1.03 meters in black.
+Generate the behavior tree that achieves the objective of this mission.
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Technical output of the LLM, representing a behavior tree:&lt;&#x2F;p&gt;
+&lt;pre&gt;&lt;code&gt; --nroot 3 --nchildroot 3 --n0 0 --nchild0 2 --n00 6 --c00 0 --p00 0.9199 --n01 5 --a01 2 --p01 0 --n1 0 --nchild1 2 --n10 6 --c10 1 --p10 0.0955 --n11 5 --a11 0 --rwm11 2 --p11 0 --n2 0 --nchild2 2 --n20 6 --c20 0 --p20 0.5555 --n21 5 --a21 2 --p21 0
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Visualization of the global behavior achieved by the behavior tree created by the LLM. You can see that the robots coherently move to the black area and stay close to each other.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;media&#x2F;projects&#x2F;master-thesis-aggregation-example.gif&quot; alt=&quot;visualization of aggregation behavior&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;git-repositories&quot;&gt;Git Repositories&lt;&#x2F;h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;julianjandeleit&#x2F;swarm_descriptions&quot;&gt;Dataset&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;julianjandeleit&#x2F;thesis_llm_collective_behavior_generation&quot;&gt;Training and Evaluation&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h1 id=&quot;references&quot;&gt;References&lt;&#x2F;h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;link.springer.com&#x2F;book&#x2F;10.1007&#x2F;978-3-319-74528-2&quot;&gt;Swarm Robotics: A Formal Approach by Heiko Hamann&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;doi.org&#x2F;10.1007&#x2F;978-3-030-00533-7_3&quot;&gt;AutoMoDe-Maple: Kuckling et al.&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Conshelv</title>
+        <published>2024-01-01T00:00:00+00:00</published>
+        <updated>2024-01-01T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://julianjandeleit.github.io/projects/conshelv/"/>
+        <id>https://julianjandeleit.github.io/projects/conshelv/</id>
+        
+        <content type="html" xml:base="https://julianjandeleit.github.io/projects/conshelv/">&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.conshelv.com&#x2F;&quot;&gt;Landingpage&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;interesting-related-articles-and-projects&quot;&gt;Interesting related articles and projects&lt;&#x2F;h2&gt;
+&lt;p&gt;These things may but not necessarily have inspired Conshelv. Nevertheless, they represent concepts that are could be adapted in Conshelv or have overlapping goals or are generally independent developments that move in a similar direction.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.inkandswitch.com&#x2F;essay&#x2F;local-first&#x2F;&quot;&gt;Local-First Software&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.iankduncan.com&#x2F;engineering&#x2F;2025-11-27-crdt-dictionary&#x2F;&quot;&gt;CRDTs&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;2023.nook-luebeck.de&#x2F;talks&#x2F;eine-einfuehrung-zu-crdts&#x2F;&quot;&gt;CRDT Nook 2023 Lübeck Vorlesung und Slides&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;json-schema.org&#x2F;&quot;&gt;JSONSchema&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;json-ld.org&#x2F;&quot;&gt;JSON-LD&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.andrew.cmu.edu&#x2F;course&#x2F;15-749&#x2F;READINGS&#x2F;required&#x2F;cas&#x2F;tridgell96.pdf&quot;&gt;RSync&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;rclone.org&#x2F;&quot;&gt;RClone&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;automerge&#x2F;automerge?tab=readme-ov-file&quot;&gt;Automerge&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;loro.dev&#x2F;blog&#x2F;v1.0&quot;&gt;Loro&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=46665839&quot;&gt;A Social Filesystem | ATProto | Hackernews&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;overreacted.io&#x2F;a-social-filesystem&#x2F;&quot;&gt;A Social Filesstem | ATProto | Article&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;awesome.ecosyste.ms&#x2F;topics&#x2F;atproto&quot;&gt;AT Protocol&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;nostr.com&#x2F;&quot;&gt;Nostr&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;joinmastodon.org&#x2F;de&quot;&gt;Mastodon&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;perkeep.org&#x2F;&quot;&gt;Perkeep&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;ipfs.tech&#x2F;&quot;&gt;IPFS&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;mylio.com&#x2F;&quot;&gt;Mylio&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;9001&#x2F;copyparty&quot;&gt;Copyparty&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;nextcloud.com&#x2F;de&#x2F;&quot;&gt;Nextcloud&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.w3.org&#x2F;RDF&#x2F;&quot;&gt;RDF&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;neo4j.com&#x2F;&quot;&gt;Neo4j&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;git-scm.com&#x2F;&quot;&gt;Git&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;dod.ngo&#x2F;events&quot;&gt;Department of Decentraliation&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;protocol.berlin&#x2F;&quot;&gt;Protocol Berg&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;decentral.community&#x2F;&quot;&gt;Decentral Community&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Fishing Vizzard</title>
+        <published>2024-01-01T00:00:00+00:00</published>
+        <updated>2024-01-01T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://julianjandeleit.github.io/projects/fishing-vizzard/"/>
+        <id>https://julianjandeleit.github.io/projects/fishing-vizzard/</id>
+        
+        <content type="html" xml:base="https://julianjandeleit.github.io/projects/fishing-vizzard/">&lt;p&gt;Developed during Master &lt;em&gt;Course Advanced Visual Analytics&lt;&#x2F;em&gt; at Uni Konstanz.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;doi.org&#x2F;10.1109&#x2F;VASTChallenge64683.2024.00017&quot;&gt;DOI&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;group2.vast24.dbvis.de&#x2F;&quot;&gt;Demo&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Ai-Cli</title>
+        <published>2023-01-01T00:00:00+00:00</published>
+        <updated>2023-01-01T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://julianjandeleit.github.io/projects/ai-cli/"/>
+        <id>https://julianjandeleit.github.io/projects/ai-cli/</id>
+        
+        <content type="html" xml:base="https://julianjandeleit.github.io/projects/ai-cli/">&lt;p&gt;Created during HiWi position in AI4Grids Project at HTWG Konstanz.&lt;&#x2F;p&gt;
+&lt;p&gt;A command line script to simplify ML projects for servers with multiple users. It uses Docker containers to manage and isolate dependencies and tracks experiments with MLFlow. CI is supported with CML runners. Environments can be accessed using jupyter servers. Works with Conda and different CUDA versions.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;julianjandeleit&#x2F;ai-cli&quot;&gt;Repo&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Bachelor Thesis: Pose Estimation for Ushichka Dataset</title>
+        <published>2022-01-01T00:00:00+00:00</published>
+        <updated>2022-01-01T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://julianjandeleit.github.io/projects/bachelor-thesis-dmcp/"/>
+        <id>https://julianjandeleit.github.io/projects/bachelor-thesis-dmcp/</id>
+        
+        <content type="html" xml:base="https://julianjandeleit.github.io/projects/bachelor-thesis-dmcp/">&lt;ul&gt;
+&lt;li&gt;Description of larger project at workgroup &lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.activesensingcollectives.com&#x2F;index.html&quot;&gt;Active Sensing Collectives&lt;&#x2F;a&gt; website.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ushichka&#x2F;dmcp&quot;&gt;Repo&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>RoboCup Junior</title>
+        <published>2017-01-01T00:00:00+00:00</published>
+        <updated>2017-01-01T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://julianjandeleit.github.io/projects/robocup-junior/"/>
+        <id>https://julianjandeleit.github.io/projects/robocup-junior/</id>
+        
+        <content type="html" xml:base="https://julianjandeleit.github.io/projects/robocup-junior/">&lt;p&gt;With my Team “Bodenseekaimane” I achieved 1. and 2. place in the German RoboCup Junior Championships during highschool.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;recording-from-the-championships-in-vohringen&quot;&gt;Recording from the Championships in Vöhringen&lt;&#x2F;h1&gt;
+ &lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https:&#x2F;&#x2F;www.youtube-nocookie.com&#x2F;embed&#x2F;SiNUKvay4Gk?si=FkdQHVl7CaX72Vqq&amp;amp;controls=0&amp;amp;start=375&quot; title=&quot;YouTube video player&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&quot; referrerpolicy=&quot;strict-origin-when-cross-origin&quot; allowfullscreen&gt;&lt;&#x2F;iframe&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.suedkurier.de&#x2F;region&#x2F;bodenseekreis&#x2F;markdorf&#x2F;Schueler-bekommen-Akademie-Zertifikat;art372484,8775677&quot;&gt;Newspaper article&lt;&#x2F;a&gt; about Robotik-AG.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        
+    </entry>
+</feed>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <title>Ai-Cli | Website of Julian Jandeleit</title>
+    <meta name="description" content="This command line script, created for AI4Grids project at HTWG Konstanz, streamlines ML projects for multi-user servers using Docker for dependencies, MLFlow for tracking, and offers Jupyter server access, supporting Conda and various CUDA versions.">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://julianjandeleit.github.io/style.css">
+    
+    <!-- Dynamic color configuration from config.toml -->
+    
+    <style>
+        :root {
+            --primary-color: #39444C;
+            --secondary-color: #008C8C;
+            --accent-color: #98A6AD;
+            --text-color: #2C2F33;
+            --background-color: #F8F9FA;
+            --card-background: #FFFFFF;
+            --border-color: #D0D3D4;
+            --light-background: #EDF0F2;
+        }
+        
+        .dark-mode {
+            --text-color: #E0E0E0;
+            --background-color: #121212;
+            --card-background: #1E1E1E;
+            --border-color: #2C2C2C;
+        }
+        
+        /* Footer link styling */
+        .footer a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer a:hover {
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+    </style>
+    
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="https://julianjandeleit.github.io/favicon.ico">
+    
+    
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <!-- Mobile menu button -->
+            <div class="nav-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            
+            <!-- Navigation links -->
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="https://julianjandeleit.github.io" class="nav-link"><i class="fas fa-home"></i></a>
+                </li>
+                
+                    
+                    <li class="nav-item">
+                        <a href="https://julianjandeleit.github.io/projects" class="nav-link">Projects</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a href="https://julianjandeleit.github.io/photography" class="nav-link">Photography</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a href="https://julianjandeleit.github.io/music" class="nav-link">Music</a>
+                    </li>
+                    
+                
+                
+                
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main content -->
+    <main class="main-content">
+        
+<div class="article-template">
+    <div class="container">
+        <article class="article-content">
+            <header class="article-header">
+                <h1>Ai-Cli</h1>
+                
+                
+                <time class="article-date">January 01, 2023</time>
+                
+
+                
+                <p class="article-description">This command line script, created for AI4Grids project at HTWG Konstanz, streamlines ML projects for multi-user servers using Docker for dependencies, MLFlow for tracking, and offers Jupyter server access, supporting Conda and various CUDA versions.</p>
+                
+            </header>
+            
+            <div class="article-body">
+                <p>Created during HiWi position in AI4Grids Project at HTWG Konstanz.</p>
+<p>A command line script to simplify ML projects for servers with multiple users. It uses Docker containers to manage and isolate dependencies and tracks experiments with MLFlow. CI is supported with CML runners. Environments can be accessed using jupyter servers. Works with Conda and different CUDA versions.</p>
+<ul>
+<li><a rel="external" href="https://github.com/julianjandeleit/ai-cli">Repo</a></li>
+</ul>
+  <!-- Directly renders content from the markdown -->
+            </div>
+        </article>
+    </div>
+</div>
+
+<style>
+.article-template {
+    padding: 4rem 0;
+}
+
+.article-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.article-header {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.article-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.article-date {
+    color: var(--secondary-color);
+    font-size: 1rem;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.article-description {
+    color: var(--accent-color);
+    font-size: 1.35rem;
+    display: block;
+    align-self:last baseline;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.article-body {
+    line-height: 1.7;
+    color: var(--text-color);
+}
+
+.article-body h2,
+.article-body h3,
+.article-body h4 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.article-body p {
+    margin-bottom: 1.5rem;
+}
+
+.article-body ul,
+.article-body ol {
+    margin-bottom: 1.5rem;
+    padding-left: 2rem;
+}
+
+.article-body li {
+    margin-bottom: 0.5rem;
+}
+
+.article-body blockquote {
+    border-left: 4px solid var(--primary-color);
+    padding-left: 1.5rem;
+    margin: 2rem 0;
+    font-style: italic;
+    color: var(--secondary-color);
+}
+
+.article-body pre {
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 0.375rem;
+    padding: 1.5rem;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+}
+
+.article-body code {
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 0.25rem;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.9rem;
+}
+</style>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p style="font-size: 0.8em;">&copy; 2026 Julian Jandeleit. <br> Built with <a href="https://www.getzola.org/">Zola</a> using the <a href="https://github.com/jskaza/peritus"><strong>peritus</strong></a> theme by <a href="https://jskaza.github.io/">Jonathan Skaza</a>.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile menu toggle
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+        
+        mobileMenu.addEventListener('click', function() {
+            mobileMenu.classList.toggle('is-active');
+            navMenu.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
+            mobileMenu.classList.remove('is-active');
+            navMenu.classList.remove('active');
+        }));
+    </script>
+</body>
+</html> 

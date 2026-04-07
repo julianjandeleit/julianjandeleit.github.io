@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <title>Website of Julian Jandeleit</title>
+    <meta name="description" content="I play piano and guitar and like to play-along, improvise and draft new melodies">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://julianjandeleit.github.io/style.css">
+    
+    <!-- Dynamic color configuration from config.toml -->
+    
+    <style>
+        :root {
+            --primary-color: #39444C;
+            --secondary-color: #008C8C;
+            --accent-color: #98A6AD;
+            --text-color: #2C2F33;
+            --background-color: #F8F9FA;
+            --card-background: #FFFFFF;
+            --border-color: #D0D3D4;
+            --light-background: #EDF0F2;
+        }
+        
+        .dark-mode {
+            --text-color: #E0E0E0;
+            --background-color: #121212;
+            --card-background: #1E1E1E;
+            --border-color: #2C2C2C;
+        }
+        
+        /* Footer link styling */
+        .footer a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer a:hover {
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+    </style>
+    
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="https://julianjandeleit.github.io/favicon.ico">
+    
+    
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <!-- Mobile menu button -->
+            <div class="nav-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            
+            <!-- Navigation links -->
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="https://julianjandeleit.github.io" class="nav-link"><i class="fas fa-home"></i></a>
+                </li>
+                
+                    
+                    <li class="nav-item">
+                        <a href="https://julianjandeleit.github.io/projects" class="nav-link">Projects</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a href="https://julianjandeleit.github.io/photography" class="nav-link">Photography</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a href="https://julianjandeleit.github.io/music" class="nav-link">Music</a>
+                    </li>
+                    
+                
+                
+                
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main content -->
+    <main class="main-content">
+        
+<div class="section-template">
+    <div class="container">
+        <div class="section-header">
+            <h1>Music</h1>
+            
+            <p>I play piano and guitar and like to play-along, improvise and draft new melodies</p>
+            
+        </div>
+        
+        <div class="section-content">
+            
+                <h1 id="original-works">Original Works</h1>
+<p>Some piano improvisations have turned into their own pieces. <em>Finished pieces</em>, where I have written sheet music for are:</p>
+<ul>
+<li><em>Perfectly Superficial</em></li>
+<li><em>Spiral Waves</em></li>
+</ul>
+<br>
+<p><em>Perfectly Superficial</em>, was originally inspired by the Black Mirror episode <em>Nosedive</em>.</p>
+<h1 id="piano">Piano</h1>
+<p>I took over 12 years of piano lessons in my childhood, receiving training in both classical and modern music. Now, I enjoy playing along with pop and rock songs, as well as performing neoclassical minimalist pieces.
+I’ve also taught myself to improvise in this style, which has led to a few distinct compositions.</p>
+<p>Some pieces i like to play:</p>
+<ul>
+<li><em>Canon in D</em>, Pachelbel</li>
+<li><em>Passacaille</em>, Händel</li>
+<li><em>Winter I</em>, Vivaldi</li>
+<li><em>November</em>, Wolfgang Fuchs</li>
+<li><em>Tu Sei</em>, Ludovico Einaudi</li>
+<li><em>Porz Goret</em>, Yann Tieren</li>
+<li><em>All of Me</em>, Jon Schmidt</li>
+</ul>
+<br>
+<h1 id="guitar">Guitar</h1>
+<p>At some point, I started picking up the guitar more and more often, have now been taking lessons since 2024 to improve my skills. Here, I focus on styles that are new to me, especially bossa nova, blues, jazz. Of course, I’ve also tried my hand at rock and for example transcribed “Sometimes I Feel Like Screaming” by Deep Purple.</p>
+<p>Some pieces i like to play:</p>
+<ul>
+<li><em>Manhã de Carnaval</em>, Luiz Bonfá</li>
+<li><em>Blue Bossa</em>, Kenny Dorham</li>
+<li><em>Bossa-Nove Breeze &amp; Etude</em>, Gerald Schwertberger</li>
+<li><em>Etude No. 6</em>, Leo Brouwer</li>
+<li><em>Nothing Else Matters</em>, Metallica</li>
+<li><em>Sometimes I Feel Like Screaming</em>, Deep Purple</li>
+</ul>
+
+            
+            
+            
+            
+            
+        </div>
+    </div>
+</div>
+
+<style>
+.items-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.item-card {
+    background-color: var(--card-background);
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.item-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--hover-shadow);
+}
+
+.item-card h3 {
+    margin-bottom: 1rem;
+}
+
+.item-card h3 a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.item-card h3 a:hover {
+    color: var(--primary-color);
+}
+
+.item-date {
+    color: var(--secondary-color);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.item-description, .item-summary {
+    margin-bottom: 1rem;
+    color: var(--secondary-color);
+}
+
+.item-venue {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.item-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.item-link {
+    padding: 0.5rem 1rem;
+    background-color: var(--border-color);
+    border-radius: 0.25rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.item-link:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.subsection {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background-color: var(--card-background);
+    border-radius: 0.5rem;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+}
+
+.subsection h2 a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.subsection h2 a:hover {
+    color: var(--primary-color);
+}
+</style>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p style="font-size: 0.8em;">&copy; 2026 Julian Jandeleit. <br> Built with <a href="https://www.getzola.org/">Zola</a> using the <a href="https://github.com/jskaza/peritus"><strong>peritus</strong></a> theme by <a href="https://jskaza.github.io/">Jonathan Skaza</a>.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile menu toggle
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+        
+        mobileMenu.addEventListener('click', function() {
+            mobileMenu.classList.toggle('is-active');
+            navMenu.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
+            mobileMenu.classList.remove('is-active');
+            navMenu.classList.remove('active');
+        }));
+    </script>
+</body>
+</html> 

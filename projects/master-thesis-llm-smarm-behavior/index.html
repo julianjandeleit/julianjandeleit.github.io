@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <title>Master Thesis: Training LLMs to create Swarm Behavior | Website of Julian Jandeleit</title>
+    <meta name="description" content="Training LLMs to translate Mission Descriptions in Natural Language into Controller for Robot Swarms.">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://julianjandeleit.github.io/style.css">
+    
+    <!-- Dynamic color configuration from config.toml -->
+    
+    <style>
+        :root {
+            --primary-color: #39444C;
+            --secondary-color: #008C8C;
+            --accent-color: #98A6AD;
+            --text-color: #2C2F33;
+            --background-color: #F8F9FA;
+            --card-background: #FFFFFF;
+            --border-color: #D0D3D4;
+            --light-background: #EDF0F2;
+        }
+        
+        .dark-mode {
+            --text-color: #E0E0E0;
+            --background-color: #121212;
+            --card-background: #1E1E1E;
+            --border-color: #2C2C2C;
+        }
+        
+        /* Footer link styling */
+        .footer a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer a:hover {
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+    </style>
+    
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="https://julianjandeleit.github.io/favicon.ico">
+    
+    
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <!-- Mobile menu button -->
+            <div class="nav-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            
+            <!-- Navigation links -->
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="https://julianjandeleit.github.io" class="nav-link"><i class="fas fa-home"></i></a>
+                </li>
+                
+                    
+                    <li class="nav-item">
+                        <a href="https://julianjandeleit.github.io/projects" class="nav-link">Projects</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a href="https://julianjandeleit.github.io/photography" class="nav-link">Photography</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a href="https://julianjandeleit.github.io/music" class="nav-link">Music</a>
+                    </li>
+                    
+                
+                
+                
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main content -->
+    <main class="main-content">
+        
+<div class="article-template">
+    <div class="container">
+        <article class="article-content">
+            <header class="article-header">
+                <h1>Master Thesis: Training LLMs to create Swarm Behavior</h1>
+                
+                
+                <time class="article-date">January 01, 2025</time>
+                
+
+                
+                <p class="article-description">Training LLMs to translate Mission Descriptions in Natural Language into Controller for Robot Swarms.</p>
+                
+            </header>
+            
+            <div class="article-body">
+                <h1 id="overview">Overview</h1>
+<p>Designing collective behavior from scratch is difficult. To build robot swarms that solve a desired task, the complex effect of local interaction between all robots needs to be understood and correctly modeled. Then, individual robot controllers can be crafted that then result in an emergent global behavior at the swarm level by interaction with peers. However, decentrally controlled robot swarms have advantages or robustness, scalability and cost effectivenes.</p>
+<p>Transformer-based Large Language Models (LLMS), publicly known as _AI_has recently shown surprising capabilites of semantic understanding of domain knowledge they were not-trained on. This has led to prompt-engineering approaches that assign a LLM the robot and task them to come up with the next action.
+For swarm robotics, this approach has many downsides. First, LLMs are a very ressource heavy model, which represents a stark contrast to the small, lightweight robotic agents. Second, experiments in swarm robotics have sofar instructed them with known swarm algorithms, faced major challenges in creating convergent behavior or used a top down approach, where the LLM has global knowledge, which is unsuitable to achieve scalability and true collective behavior. Third, collective robotics is a very niche topic, and LLMs have likely not seen many examples durinig training, so prompt engineering is naturally limited.</p>
+<p>In my master thesis I suggest training a LLM on examples of local agent behavior and resulting global swarm behavior to create a local-to-global model and represent the missing macro-micro-link for top-down behavior design and understanding. In this approach, the LLM is not the robot controller itself, but takes the place of a meta-model that generates the actual robot controllers according to given constraints.
+In the scope of the thesis I fine-tune a pre-trained LLM on a custom artificial dataset of textual descriptions of a scenario and corresponding behavior trees as robot controllers. The dataset builds on top of AutoMoDe-Maple, an evolutionary method for designing robot controllers according to a fitness function. While showing to still beeing a challenge to beat state-of-the-art methods using this approach, I show that the fine-tuned LLM understands enough about collective behavior to create working roboter controllers for scenarios and missions it was not trained on. It has also shown advantages over conventional optimization methods by producing suitable behaviors in response to environmental changes from a single zero-shot inference, while conventional approaches would require time-consuming optimization afterwards.
+With what my initial investigation has shown, I strongly believe that the gap w.r.t. state-of-the-art in performance benchmarks is an engineering challenge that can be overcome with sufficient time and effort, and trained LLMs are a suitable meta-method to bridge the macro-micro gap.</p>
+<p>A nice-to-have is, that since the input is natural-language text, my approach allows non-expert users to create collective behavior and instruct robot swarms without domain knowledge.</p>
+<h2 id="example">Example</h2>
+<p>This example shows a scenario where the model has not seen missions of type <em>aggregation</em> during training. Here, the robot swarm has to meet at the black area on the ground. Note that the E-Puck robot model used here cannot see the ground color from distance and the robots have to rely on the peers in their local environment to efficiently navigate to the correct place.</p>
+<p>The yellow ball in the visualization refers to a light the robots can use for orientation. The position of the light however is not necessarily at the black area. This fact is ,in this case, communicated to the LLM by the absolute position. The placement of lights serves as an example of different environmental conditions the LLM <em>can</em> make use of.</p>
+<p>The example shows that the LLM was able to create a robot controller that achieves the desired behavior, even without having seen a single aggregation type mission during training. This goal has only understood by combinding the pre-training that makes the LLM understand general language and the fine-tuning on swarm behavior, that allows the LLM to understand the meaning of different local behaviors w.r.t. the global swarm goal.</p>
+<p>LLM Input:</p>
+<pre><code>The circular arena, constructed with 19 walls, has a radius of 3.17 m. The following lights are present in the arena at coordinates: ((-0.36, 0.14)).Evenly positioned around the origin are 14 robots within a radius of 1.20 meters. The goal is for the robots to aggregate at the black circle. There are two areas on the floor: a circle at [-1.47, 1.91] with a radius of 0.53 meters in white, and another circle at [-0.36, 0.14] with a radius of 1.03 meters in black.
+Generate the behavior tree that achieves the objective of this mission.
+</code></pre>
+<p>Technical output of the LLM, representing a behavior tree:</p>
+<pre><code> --nroot 3 --nchildroot 3 --n0 0 --nchild0 2 --n00 6 --c00 0 --p00 0.9199 --n01 5 --a01 2 --p01 0 --n1 0 --nchild1 2 --n10 6 --c10 1 --p10 0.0955 --n11 5 --a11 0 --rwm11 2 --p11 0 --n2 0 --nchild2 2 --n20 6 --c20 0 --p20 0.5555 --n21 5 --a21 2 --p21 0
+</code></pre>
+<p>Visualization of the global behavior achieved by the behavior tree created by the LLM. You can see that the robots coherently move to the black area and stay close to each other.</p>
+<p><img src="/media/projects/master-thesis-aggregation-example.gif" alt="visualization of aggregation behavior" /></p>
+<h1 id="git-repositories">Git Repositories</h1>
+<ul>
+<li><a rel="external" href="https://github.com/julianjandeleit/swarm_descriptions">Dataset</a></li>
+<li><a rel="external" href="https://github.com/julianjandeleit/thesis_llm_collective_behavior_generation">Training and Evaluation</a></li>
+</ul>
+<h1 id="references">References</h1>
+<ul>
+<li><a rel="external" href="https://link.springer.com/book/10.1007/978-3-319-74528-2">Swarm Robotics: A Formal Approach by Heiko Hamann</a></li>
+<li><a rel="external" href="https://doi.org/10.1007/978-3-030-00533-7_3">AutoMoDe-Maple: Kuckling et al.</a></li>
+</ul>
+  <!-- Directly renders content from the markdown -->
+            </div>
+        </article>
+    </div>
+</div>
+
+<style>
+.article-template {
+    padding: 4rem 0;
+}
+
+.article-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.article-header {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.article-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.article-date {
+    color: var(--secondary-color);
+    font-size: 1rem;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.article-description {
+    color: var(--accent-color);
+    font-size: 1.35rem;
+    display: block;
+    align-self:last baseline;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.article-body {
+    line-height: 1.7;
+    color: var(--text-color);
+}
+
+.article-body h2,
+.article-body h3,
+.article-body h4 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.article-body p {
+    margin-bottom: 1.5rem;
+}
+
+.article-body ul,
+.article-body ol {
+    margin-bottom: 1.5rem;
+    padding-left: 2rem;
+}
+
+.article-body li {
+    margin-bottom: 0.5rem;
+}
+
+.article-body blockquote {
+    border-left: 4px solid var(--primary-color);
+    padding-left: 1.5rem;
+    margin: 2rem 0;
+    font-style: italic;
+    color: var(--secondary-color);
+}
+
+.article-body pre {
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 0.375rem;
+    padding: 1.5rem;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+}
+
+.article-body code {
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 0.25rem;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.9rem;
+}
+</style>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p style="font-size: 0.8em;">&copy; 2026 Julian Jandeleit. <br> Built with <a href="https://www.getzola.org/">Zola</a> using the <a href="https://github.com/jskaza/peritus"><strong>peritus</strong></a> theme by <a href="https://jskaza.github.io/">Jonathan Skaza</a>.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile menu toggle
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+        
+        mobileMenu.addEventListener('click', function() {
+            mobileMenu.classList.toggle('is-active');
+            navMenu.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
+            mobileMenu.classList.remove('is-active');
+            navMenu.classList.remove('active');
+        }));
+    </script>
+</body>
+</html> 
