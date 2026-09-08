@@ -17,3 +17,8 @@ icon = "ai ai-orcid"
 name = "Google Scholar"
 url = "https://scholar.google.com/scholar?hl=de&as_sdt=0,5&q=julian+jandeleit"
 icon = "ai ai-google-scholar"
+
+[[social]]
+name = "Flickr"
+url = "https://www.flickr.com/photos/204928066@N03/"
+icon = "fab fa-flickr"
