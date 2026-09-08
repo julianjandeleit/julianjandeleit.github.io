@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <title>Hobby Photography Gallery | Website of Julian Jandeleit</title>
+    <meta name="description" content="A collection of select photos I have taken">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://julianjandeleit.github.io/style.css">
+    
+    <!-- Dynamic color configuration from config.toml -->
+    
+    <style>
+        :root {
+            --primary-color: #39444C;
+            --secondary-color: #008C8C;
+            --accent-color: #98A6AD;
+            --text-color: #2C2F33;
+            --background-color: #F8F9FA;
+            --card-background: #FFFFFF;
+            --border-color: #D0D3D4;
+            --light-background: #EDF0F2;
+        }
+        
+        .dark-mode {
+            --text-color: #E0E0E0;
+            --background-color: #121212;
+            --card-background: #1E1E1E;
+            --border-color: #2C2C2C;
+        }
+        
+        /* Footer link styling */
+        .footer a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer a:hover {
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+    </style>
+    
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="https://julianjandeleit.github.io/favicon.ico">
+    
+    
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <!-- Mobile menu button -->
+            <div class="nav-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            
+            <!-- Navigation links -->
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="https://julianjandeleit.github.io" class="nav-link"><i class="fas fa-home"></i></a>
+                </li>
+                
+                    
+                    <li class="nav-item">
+                        <a href="https://julianjandeleit.github.io/projects" class="nav-link">Projects</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a href="https://julianjandeleit.github.io/photography" class="nav-link">Photography</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a href="https://julianjandeleit.github.io/music" class="nav-link">Music</a>
+                    </li>
+                    
+                
+                
+                
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main content -->
+    <main class="main-content">
+        
+<div class="section-template">
+    <div class="container">
+        <div class="section-header">
+            <h1>Hobby Photography Gallery</h1>
+
+            
+            <p>A collection of select photos I have taken</p>
+            
+        </div>
+
+        
+
+        <div class="section-content">
+            
+                <p>I started uploading my photography on <a href="https://www.flickr.com/photos/204928066@N03/">Flickr</a>, where you can follow me now.</p>
+<p>Here is a preview of pictures I have taken in 2026</p>
+<div class="flickr-gallery-row">
+<div class="flickr-gallery">
+    <a
+        data-flickr-embed="true"
+        data-header="true"
+        href="https://www.flickr.com/photos/204928066@N03/albums/72177720335491073"
+        title="Priština & Tirana Architecture 2026"
+        class="flickr-gallery-link"
+    >
+        <img
+            src="https://live.staticflickr.com/65535/55511520498_5839e424da_z.jpg"
+            width="800"
+            height="600"
+            alt="Priština & Tirana Architecture 2026"
+            class="flickr-gallery-image"
+        >
+    </a>
+</div>
+<script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+<style>
+.flickr-gallery-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+.flickr-gallery {
+    flex: 1 1 300px;
+    max-width: 600px;
+    min-width: 300px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 0;
+    text-align: center;
+}
+
+.flickr-gallery-link {
+    display: block;
+    max-width: 100%;
+    margin: auto;
+}
+
+.flickr-gallery-image {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+</style>
+</div>
+<br>
+<p>My equipment is a Canon 700D with several different lenses. My favorite currently is the 24mm pancake, which I always have attached on my cammera by default now.</p>
+
+            
+
+            
+        </div>
+    </div>
+</div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p style="font-size: 0.8em;">&copy; 2026 Julian Jandeleit. <br> Built with <a href="https://www.getzola.org/">Zola</a> using the <a href="https://github.com/jskaza/peritus"><strong>peritus</strong></a> theme by <a href="https://jskaza.github.io/">Jonathan Skaza</a>.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile menu toggle
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+        
+        mobileMenu.addEventListener('click', function() {
+            mobileMenu.classList.toggle('is-active');
+            navMenu.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
+            mobileMenu.classList.remove('is-active');
+            navMenu.classList.remove('active');
+        }));
+    </script>
+</body>
+</html>
