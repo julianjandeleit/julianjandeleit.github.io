@@ -1,3 +1,4 @@
 [submodule "themes/peritus"]
 	path = themes/peritus
-	url = git@github.com:jskaza/peritus.git
+	url = git@github.com:julianjandeleit/peritus.git
+
