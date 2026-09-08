@@ -1,0 +1,46 @@
+<div class="gallery">
+  {% if section is defined and section.assets is defined and (section.assets | length) > 0 %}
+    {% for asset in section.assets %}
+      {% set asset_lower = asset | lower %}
+      {% if ".jpg" in asset_lower or ".jpeg" in asset_lower or ".png" in asset_lower or ".webp" in asset_lower %}
+        {# Use original image URL from content; original files are already copied to `public/photography` #}
+        {% set original_url = get_url(path=asset) %}
+
+        <div class="gallery-item">
+          <a href="{{ original_url }}" target="_blank" rel="noopener noreferrer">
+            <img src="{{ original_url }}" alt="Gallery image" loading="lazy" />
+          </a>
+        </div>
+      {% endif %}
+    {% endfor %}
+  {% else %}
+    <p class="gallery-empty">No images found in this section.</p>
+  {% endif %}
+</div>
+
+<style>
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+</style>
