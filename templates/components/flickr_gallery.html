@@ -1,0 +1,61 @@
+```tera
+{% component flickr_gallery(flickr_url: string, title: string, preview_image: string, width: integer, height: integer) %}
+<div class="flickr-gallery">
+    <a
+        data-flickr-embed="true"
+        data-header="true"
+        href="{{ flickr_url }}"
+        title="{{ title }}"
+        class="flickr-gallery-link"
+    >
+        <img
+            src="{{ preview_image }}"
+            width="{{ width }}"
+            height="{{ height }}"
+            alt="{{ title }}"
+            class="flickr-gallery-image"
+        >
+    </a>
+</div>
+
+<script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+
+<style>
+.flickr-gallery-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+.flickr-gallery {
+    flex: 1 1 300px;
+    max-width: 600px;
+    min-width: 300px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 0;
+    text-align: center;
+}
+
+.flickr-gallery-link {
+    display: block;
+    max-width: 100%;
+    margin: auto;
+}
+
+.flickr-gallery-image {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+</style>
+{% endcomponent flickr_gallery %}
+```

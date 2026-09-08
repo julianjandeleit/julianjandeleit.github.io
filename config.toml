@@ -33,17 +33,18 @@ github_alerts = true
 [extra]
 # Put all your custom variables here
 name = "Julian Jandeleit"
-role = "Computer and Data Scientist"
+role = "Data Scientist with focus on physical world applications"
 # cv_url ="/CV.pdf"
 bio = """
 I'm passionate about understanding our world through data, mathematics, and computational modeling to create technologies for the benefit of everyone.
 
-A primary field of interest is autonomous systems which has led me to work on several projects in the intersection of computer vision, robotics, and machine learning.
+A primary application interest for me is autonomous systems, which has led me to work on several projects in the intersection of computer vision, robotics, and state-of-the-art machine learning.
+During my studies I was exposted to the fascinating world of emergent self-organizing systems, which I want to study on a foundational level in my academic work.
 
-Currently, I'm employed at Baumer Innovation GmbH, developing 3D data analysis and processing pipelines for new sensor solutions. 
+Currently, I'm employed at Baumer Innovation GmbH, developing 3D data reconstruction pipelines for new sensor solutions. 
 Next to my work, I focus on its theoretical foundations by studying mathematics as a third degree on top of my previous studies in computer science.
 
-In my free time, I like to make music :musical_keyboard: :guitar:, take photos :camera: or go sailing :sailboat: on Lake Constance.
+In my free time, I like to make music :musical_keyboard: :guitar:, take photos :camera: or go sailing :sailboat: on Lake Constance. Feel free to explore the other sections of my website to learn more about my work and interests!
 """
 
 # navbar items
